@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: "GitHub Repo Scorer"
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+github:
+  api:
+    search:
+      url: "https://api.github.com/search/repositories?q=language:%s+created:>%s&page=%s"
+repository:
+    scoring:
+      weight-stars: 0.3
+      weight-forks: 0.5
+      weight-recent: 0.2
+      recency-base: 100
+logging:
+  level:
+    org.springframework.boot.autoconfigure: WARN
+    org.springdoc: DEBUG
+app:
+  redis:
+    enabled: false
+    host: localhost
+    port: 6379
+    ttl-hours: 6
