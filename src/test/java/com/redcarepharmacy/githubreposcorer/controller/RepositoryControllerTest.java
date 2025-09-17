@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -39,7 +40,8 @@ class RepositoryControllerTest {
                 List.of(
                         new RepositoryScoreDto(
                                 "repo1", "user1", "java",
-                                10, 5, 2.5)));
+                                10, 5, Instant.now(),
+                                Instant.now(), 2.5)));
     }
 
     @Test

@@ -1,6 +1,9 @@
 package com.redcarepharmacy.githubreposcorer.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
+import java.time.Instant;
 
 public record RepositoryScoreDto(
         String name,
@@ -8,6 +11,8 @@ public record RepositoryScoreDto(
         String language,
         int stars,
         int forks,
+        Instant createdAt,
+        Instant updatedAt,
         double popularityScore
 ) implements Serializable {
     public static RepositoryScoreDto from(Item repo, double score) {
@@ -17,6 +22,8 @@ public record RepositoryScoreDto(
                 repo.language(),
                 repo.stargazersCount(),
                 repo.forksCount(),
+                repo.createdAt(),
+                repo.updatedAt(),
                 score
         );
     }
